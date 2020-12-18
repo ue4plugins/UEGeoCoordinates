@@ -48,6 +48,19 @@ public:
 	UFUNCTION(BlueprintPure, meta = (DisplayName = "ToSeparateTexts", AdvancedDisplay = "4", BlueprintAutocast), Category = "Simulation|Coordinates")
 		static void Conv_LargeCoordinatesToSeparateTexts(FLargeCoordinates InLargeCoordinates, FText& X, FText& Y, FText& Z, int32 IntegralDigits = 3);
 
+	UFUNCTION(BlueprintCallable, Category = "Simulation|Coordinates")
+		static void CreateGeographicCoordinatesApproximation(float Latitude, float Longitude, float Altitude, FGeographicCoordinates& GeographicCoordinates);
+
+	UFUNCTION(BlueprintCallable, Category = "Simulation|Coordinates")
+		static void CreateLargeCoordinatesApproximation(float X, float Y, float Z, FLargeCoordinates& LargeCoordinates);
+
+	UFUNCTION(BlueprintCallable, Category = "Simulation|Coordinates")
+		static void GetGeographicCoordinatesApproximation(FGeographicCoordinates GeographicCoordinates, float& Latitude, float& Longitude, float& Altitude);
+
+	UFUNCTION(BlueprintCallable, Category = "Simulation|Coordinates")
+		static void GetLargeCoordinatesApproximation(FLargeCoordinates LargeCoordinates, float& X, float& Y, float& Z);
+
+
 private:
 	static FText AsAngle(double Val, const FNumberFormattingOptions* const Options = NULL, bool AsDMS = false);
 };

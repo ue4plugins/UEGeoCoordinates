@@ -80,4 +80,3 @@ FORCEINLINE FLargeCoordinates& FLargeCoordinates::operator=(const FLargeCoordina
 
 #endif
 
-SIMULATIONMODULE_API const FLargeCoordinates FLargeCoordinates::ZeroCoordinates(0.0, 0.0, 0.0);

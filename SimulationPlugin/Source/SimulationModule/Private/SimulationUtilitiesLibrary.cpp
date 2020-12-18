@@ -99,6 +99,35 @@ void USimulationUtilitiesLibrary::Conv_LargeCoordinatesToSeparateTexts(FLargeCoo
 	Z = FText::AsNumber(InLargeCoordinates.Z, &NumberFormatOptions);
 }
 
+void USimulationUtilitiesLibrary::CreateGeographicCoordinatesApproximation(float Latitude, float Longitude, float Altitude, FGeographicCoordinates& GeographicCoordinates)
+{
+	GeographicCoordinates.Latitude = static_cast<double>(Latitude);
+	GeographicCoordinates.Longitude = static_cast<double>(Longitude);
+	GeographicCoordinates.Altitude = static_cast<double>(Altitude);
+}
+
+
+void USimulationUtilitiesLibrary::CreateLargeCoordinatesApproximation(float X, float Y, float Z, FLargeCoordinates& LargeCoordinates)
+{
+	LargeCoordinates.X = static_cast<double>(X);
+	LargeCoordinates.Y = static_cast<double>(Y);
+	LargeCoordinates.Z = static_cast<double>(Z);
+}
+
+void USimulationUtilitiesLibrary::GetGeographicCoordinatesApproximation(FGeographicCoordinates GeographicCoordinates, float& Latitude, float& Longitude, float& Altitude)
+{
+	Latitude = static_cast<float>(GeographicCoordinates.Latitude);
+	Longitude = static_cast<float>(GeographicCoordinates.Longitude);
+	Altitude = static_cast<float>(GeographicCoordinates.Altitude);
+}
+
+void USimulationUtilitiesLibrary::GetLargeCoordinatesApproximation(FLargeCoordinates LargeCoordinates, float& X, float& Y, float& Z)
+{
+	X = static_cast<float>(LargeCoordinates.X);
+	Y = static_cast<float>(LargeCoordinates.Y);
+	Z = static_cast<float>(LargeCoordinates.Z);
+}
+
 FText USimulationUtilitiesLibrary::AsAngle(double Val, const FNumberFormattingOptions* const Options /*= NULL*/, bool AsDMS /*= false*/)
 {
 	if (AsDMS)
