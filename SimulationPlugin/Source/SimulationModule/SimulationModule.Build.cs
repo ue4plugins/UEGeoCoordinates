@@ -57,7 +57,6 @@ public class SimulationModule : ModuleRules
         {
             List<string> RuntimeModuleNames = new List<string>();
             RuntimeModuleNames.Add("jpeg62.dll");
-            RuntimeModuleNames.Add("libcurl.dll");
             RuntimeModuleNames.Add("lzma.dll");
             RuntimeModuleNames.Add("sqlite3.dll");
             RuntimeModuleNames.Add("tiff.dll");

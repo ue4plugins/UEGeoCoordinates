@@ -20,7 +20,6 @@ public class Proj : ModuleRules
             
             // Explicitly name the used libraries
             PublicAdditionalLibraries.Add(Path.Combine(LibPath, "proj.lib"));
-			PublicAdditionalLibraries.Add(Path.Combine(LibPath, "libcurl.lib"));
 			PublicAdditionalLibraries.Add(Path.Combine(LibPath, "sqlite3.lib"));
 			PublicAdditionalLibraries.Add(Path.Combine(LibPath, "tiff.lib"));
 

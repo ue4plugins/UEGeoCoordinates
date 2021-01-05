@@ -142,7 +142,7 @@ void UGeoReferencingSubsystem::EngineToProjected(FVector EngineCoordinates, FLar
 {
 	ProjectedCoordinates = FLargeCoordinates(
 		EngineCoordinates.X * 0.01 + OriginCoordinates.X,
-		EngineCoordinates.Y * 0.01 + OriginCoordinates.Y,
+		-EngineCoordinates.Y * 0.01 + OriginCoordinates.Y,
 		EngineCoordinates.Z * 0.01 + OriginCoordinates.Z);
 }
 
@@ -150,7 +150,7 @@ void UGeoReferencingSubsystem::ProjectedToEngine(FLargeCoordinates ProjectedCoor
 {
 	EngineCoordinates = FVector(
 		ProjectedCoordinates.X - OriginCoordinates.X,
-		ProjectedCoordinates.Y - OriginCoordinates.Y,
+		-(ProjectedCoordinates.Y - OriginCoordinates.Y),
 		ProjectedCoordinates.Z - OriginCoordinates.Z) * 100;
 }
 
@@ -266,7 +266,7 @@ bool UGeoReferencingSubsystem::RebuildProjections()
 	{
 		proj_destroy(ProjGeographicToGeocentric);
 	}
-	ProjGeographicToGeocentric = GetProjection(ProjectedCRS, FString("EPSG:4978"));
+	ProjGeographicToGeocentric = GetProjection(GeographicCRS, FString("EPSG:4978"));
 
 	return (ProjProjectedToGeographic != NULL && ProjProjectedToGeocentric != NULL && ProjGeographicToGeocentric != NULL);
 }

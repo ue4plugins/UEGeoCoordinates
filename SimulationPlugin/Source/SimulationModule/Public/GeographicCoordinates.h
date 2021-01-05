@@ -80,5 +80,3 @@ FORCEINLINE FGeographicCoordinates& FGeographicCoordinates::operator=(const FGeo
 }
 
 #endif
-
-SIMULATIONMODULE_API const FGeographicCoordinates FGeographicCoordinates::ZeroCoordinates(0.0, 0.0, 0.0);
