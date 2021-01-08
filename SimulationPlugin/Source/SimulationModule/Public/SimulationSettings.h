@@ -30,8 +30,7 @@ public:
 	UPROPERTY(EditAnywhere, Config, Category = Georeferencing)
 		FString GeographicCRS = FString("EPSG:4326"); // WGS84 https://epsg.io/4326
 
-	// UPROPERTY() // TODO - I should not do that, but otherwise I get this message : 
-	// Warning: Disregard for GC object SimulationSettings / Script / SimulationModule.Default__SimulationSettings referencing GeoReferencingSubsystem / Game / Levels / EarthLevelNoBing.EarthLevelNoBing : GeoReferencingSubsystem_2147482578 which is not part of root set
+	UPROPERTY(Transient) 
 		class UGeoReferencingSubsystem* GeoReferencingSubsystem = NULL;
 
 #if WITH_EDITOR
