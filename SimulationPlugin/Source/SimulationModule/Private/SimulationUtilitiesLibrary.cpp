@@ -132,9 +132,9 @@ FText USimulationUtilitiesLibrary::AsAngle(double Val, const FNumberFormattingOp
 {
 	if (AsDMS)
 	{
-		int32 degrees = FMath::FloorToInt(Val);
-		int32 minutes = FMath::FloorToInt((Val-degrees) * 60.0);
-		double seconds = (Val - degrees - minutes / 60.0) * 3600;
+		int32 degrees = FMath::TruncToInt(Val);
+		int32 minutes = FMath::TruncToInt(60.0 * FMath::Abs<double>(Val - degrees));
+		double seconds = 3600.0 * FMath::Abs<double>(Val - degrees) - 60.0 * minutes;
 		return FText::Format(NSLOCTEXT("SimulationModule", "AngleDMSFmt", "{0}° {1}' {2}\""), FText::AsNumber(degrees), FText::AsNumber(minutes), FText::AsNumber(seconds, Options));
 	}
 	else

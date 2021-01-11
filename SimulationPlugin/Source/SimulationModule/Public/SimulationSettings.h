@@ -30,7 +30,7 @@ public:
 	UPROPERTY(EditAnywhere, Config, Category = Georeferencing)
 		FString GeographicCRS = FString("EPSG:4326"); // WGS84 https://epsg.io/4326
 
-	UPROPERTY()
+	UPROPERTY(Transient) 
 		class UGeoReferencingSubsystem* GeoReferencingSubsystem = NULL;
 
 #if WITH_EDITOR
