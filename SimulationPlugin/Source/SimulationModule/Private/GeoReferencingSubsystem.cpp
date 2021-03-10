@@ -2,10 +2,10 @@
 
 
 #include "GeoReferencingSubsystem.h"
-#include "Interfaces\IPluginManager.h"
+#include "Interfaces/IPluginManager.h"
 #include <SimulationSettings.h>
-#include "..\Public\GeoReferencingSubsystem.h"
-#include "GeoReferencingActor.h"
+#include "../Public/GeoReferencingSubsystem.h"
+#include "GeoreferencingActor.h"
 
 
 UGeoReferencingSubsystem::UGeoReferencingSubsystem() : 

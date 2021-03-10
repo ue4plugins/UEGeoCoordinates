@@ -52,17 +52,19 @@ public class SimulationModule : ModuleRules
 			}
             );
 
+        // Stage Proj data files
+        string ProjRedistFolder = Path.Combine(ModuleDirectory, @"..\ThirdParty\Proj\redist");
+        RuntimeDependencies.Add("$(BinaryOutputDir)/proj-data/*", Path.Combine(ProjRedistFolder, "proj-data/*"), StagedFileType.SystemNonUFS);
+
         // Add dependencies to PROJ
+        List<string> RuntimeModuleNames = new List<string>();
         if (Target.Platform == UnrealTargetPlatform.Win64)
         {
-            List<string> RuntimeModuleNames = new List<string>();
             RuntimeModuleNames.Add("jpeg62.dll");
             RuntimeModuleNames.Add("lzma.dll");
             RuntimeModuleNames.Add("sqlite3.dll");
             RuntimeModuleNames.Add("tiff.dll");
             RuntimeModuleNames.Add("zlib1.dll");
-            string ProjRedistFolder = Path.Combine(ModuleDirectory, @"..\ThirdParty\Proj\redist");
-
 
             foreach (string RuntimeModuleName in RuntimeModuleNames)
             {
@@ -76,9 +78,6 @@ public class SimulationModule : ModuleRules
                 //PublicDelayLoadDLLs.Add(RuntimeModuleName);
                 RuntimeDependencies.Add("$(BinaryOutputDir)/" + RuntimeModuleName, ModulePath);
             }
-
-            // Stage Proj data files
-            RuntimeDependencies.Add("$(BinaryOutputDir)/proj-data/*", Path.Combine(ProjRedistFolder, "proj-data/*"), StagedFileType.SystemNonUFS);
         }
     }
 }
