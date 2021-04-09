@@ -52,6 +52,22 @@ public:
 	* @return Reference to vector after copy.
 	*/
 	FORCEINLINE FGeographicCoordinates& operator=(const FGeographicCoordinates& Other);
+
+	/**
+	* Compare another FGeographicCoordinates into this one
+	*
+	* @param Other The coordinate to compare with.
+	* @return true if the coordinates are equal, false otherwise.
+	*/
+	FORCEINLINE bool operator==(const FGeographicCoordinates& Other) const;
+
+	/**
+	* Copy another FVector into this one
+	*
+	* @param Other The coordinate to compare with.
+	* @return true if the coordinates are not equal, false otherwise.
+	*/
+	FORCEINLINE bool operator!=(const FGeographicCoordinates& Other) const;
 #endif
 
 };
@@ -77,6 +93,18 @@ FORCEINLINE FGeographicCoordinates& FGeographicCoordinates::operator=(const FGeo
 	this->Longitude = Other.Longitude;
 	this->Altitude = Other.Altitude;
 	return *this;
+}
+
+FORCEINLINE bool operator==(const FGeographicCoordinates& Other) const
+{
+	return (this->Latitude == Other.Latitude) &&
+				 (this->Longitude == Other.Longitude) &&
+				 (this->Altitude == Other.Altitude);
+}
+
+FORCEINLINE bool operator!=(const FGeographicCoordinates& Other) const
+{
+	return !(*this==Other);
 }
 
 #endif
